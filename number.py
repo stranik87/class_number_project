@@ -1,3 +1,4 @@
+import statistics
 class Number:
     def __init__(self, value: int):
         self.value = value
@@ -9,7 +10,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return self.value
 
     def is_odd(self):
         """
@@ -18,7 +19,7 @@ class Number:
         returns: bool
 
         """
-        pass
+        return True if number.get_number()%2==0 else False
 
     def is_even(self):
         """
@@ -26,7 +27,7 @@ class Number:
 
         returns: bool
         """
-        pass
+        return True if number.get_number()%2==1 else False
 
     def is_prime(self):
         """
@@ -34,7 +35,7 @@ class Number:
 
         returns: bool
         """
-        pass
+        return True if number.get_number()%1==0 and number.get_number()%number.get_number()==0 and number.get_number()%2 !=0 else False
 
     def get_divisors(self):
         """
@@ -42,15 +43,19 @@ class Number:
 
         returns: list
         """
-        pass
+        lst = []
+        for i in range(1,number.get_number()+1):
+            if number.get_number()%i == 0:
+                lst.append(i)
 
+        return lst
     def get_length(self):
         """
         Returns the number of digits in the number.
 
         returns: int
         """
-        pass
+        return len(str(number.get_number()))
 
     def get_sum(self):
         """
@@ -58,15 +63,18 @@ class Number:
 
         returns: int
         """
-        pass
-
+        lst = []
+        for i in str(number.get_number()):
+            lst.append(int(i))
+        return sum(lst)
+       
     def get_reverse(self):
         """
         Returns the number in reverse.
 
         returns: int
         """
-        pass
+        return int(str(number.get_number())[::-1])
 
     def is_palindrome(self):
         """
@@ -74,7 +82,7 @@ class Number:
 
         returns: bool
         """
-        pass
+        return True if number.get_number() == int(str(number.get_number())[::-1]) else False
 
     def get_digits(self):
         """
@@ -82,7 +90,10 @@ class Number:
 
         returns: list
         """
-        pass
+        lst = []
+        for i in str(number.get_number() ):
+            lst.append(int(i))
+        return lst
 
     def get_max(self):
         """
@@ -90,7 +101,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return max(number.get_digits())
 
     def get_min(self):
         """
@@ -98,7 +109,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return min(number.get_digits())
 
     def get_average(self):
         """
@@ -106,7 +117,7 @@ class Number:
 
         returns: float
         """
-        pass
+        return sum(number.get_digits()) // number.get_length()
 
     def get_median(self):
         """
@@ -114,7 +125,8 @@ class Number:
 
         returns: float
         """
-        pass
+       
+        return statistics.median(number.get_digits())
 
     def get_range(self):
         """
@@ -122,7 +134,7 @@ class Number:
 
         returns: list
         """
-        pass
+        return 
 
     def get_frequency(self):
         """
@@ -130,8 +142,28 @@ class Number:
 
         returns: dict
         """
-        pass
-    
+        total = {}
+        for i in set(number.get_digits()):
+            total[i] = self.get_digits().count(i)
+        
+        
+        return total
 
 # Create a new instance of Number
-number = Number(3)
+number = Number(652134)
+
+print(number.get_number())
+print(number.is_odd())
+print(number.is_even())
+print(number.is_prime())
+print(number.get_divisors())
+print(number.get_length())
+print(number.get_sum())
+print(number.get_reverse())
+print(number.is_palindrome())
+print(number.get_digits())
+print(number.get_max())
+print(number.get_min())
+print(number.get_average())
+print(number.get_median())
+print(number.get_frequency())
